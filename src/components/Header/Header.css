@@ -1,0 +1,42 @@
+/*******   Header css section  ***********/
+.Header{
+    background: #e1e4e6;
+    height: 60px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-top: 0px;
+
+}
+.Header .logo{
+    margin-left: 60px;
+    }
+.Header .logo i{
+    height:53px;
+    float:left;  
+    padding:10px;
+}
+
+.Header .user-profile {
+    margin-right: 62px;
+    float: right;
+    display: inline-flex;
+
+ }
+
+ .Header .user-profile .user i{
+    height:53px;
+    float:right; 
+    padding:10px;
+ }
+ .Header .user-profile .username ul{
+    margin-left: -44px;
+ }
+.Header .user-profile .username ul li{
+ 
+list-style: none;
+}
+
+.Header .user-profile .username ul li i{
+    margin-left: 8px;
+}
