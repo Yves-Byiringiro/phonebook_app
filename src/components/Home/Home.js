@@ -27,6 +27,23 @@ export class Home extends React.Component{
     }
 ////////////////    delete request  used to delete data from given api  //////////////
 
+    onDelete = (id) => {
+        axios.delete(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`).then(response =>{
+
+        this.setState({errorMessage:'destroyed'});
+        this.props.deleteHandler();
+
+        }).catch(error =>{
+            this.setState({errorMessage:'error'});
+        })
+    }
+    deleteHandler(id) {
+  
+        const contacts = this.state.contacts;
+        contacts.splice(id, 1)
+        this.setState({contacts:contacts})
+    }
+
 
     render() {
         let contacts = this.state.contacts.map((contact)=>{
@@ -45,7 +62,7 @@ export class Home extends React.Component{
                         
                     </td>
                     <td>
-                        <i  className="fas fa-backspace btn-delete"></i>
+                        <i onClick={this.onDelete.bind(this, contact.id)} className="fas fa-backspace btn-delete"></i>
                     </td> 
                 </tr>                
             )
