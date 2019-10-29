@@ -1,0 +1,76 @@
+/*******   Homepage css section *********/
+
+.Title{
+    text-align: center;
+    font-size: 46px;
+    margin-top: 40px;
+    font-family: 'PT Serif', serif;
+
+}
+
+.Table{
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+    width: 600px;
+    text-align: center;
+     margin-left: auto;
+    margin-right: auto;
+}
+.Table-header{
+    background: dodgerblue;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid red;
+}
+.Table-row{
+    background: whitesmoke;
+    height: 40px;
+}
+.btn-add_contact{
+    margin-top: 16px;
+    padding: 10px;
+    background: #2da983;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    
+}
+
+.btn-add_contact i{
+    margin-right: 10px;
+}
+.btn-delete{
+     background: red;
+    color: white;
+    border: 1px solid red;
+    cursor: pointer;
+} 
+
+
+/**************   media queries here   ***************/
+@media (max-width:700px) {
+
+    .Title{
+        text-align: center;
+        font-size: 25px;
+        margin-top: 20px;
+        font-family: 'PT Serif', serif;
+    }
+    .Table{
+        width: 450px;
+    }
+    table{
+        width: 450px;
+        text-align: center;
+    }
+    .btn-add_contact{
+        margin-top: 18px;
+        padding: 8px;
+        font-size: 10px;
+    }
+}

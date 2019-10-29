@@ -3,6 +3,8 @@ import './App.css';
 import { Route, Switch} from 'react-router-dom';
 import {Header} from './components/Header/Header';
 import {Footer }from './components/Footer/Footer';
+import {Home} from './components/Home/Home';
+
 
 
 
@@ -14,7 +16,8 @@ class App extends Component {
           <Header/>
           <div className="container">
             <Switch>
-              
+              <Route exact path="/" component ={Home}/>
+
              
             </Switch>
           </div>
