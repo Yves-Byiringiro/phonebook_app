@@ -5,6 +5,8 @@ import {Header} from './components/Header/Header';
 import {Footer }from './components/Footer/Footer';
 import {Home} from './components/Home/Home';
 import {ContactDetails} from './components/ContactDetails/ContactDetails';
+import {AddNewContact} from './components/AddNewContact/AddNewContact';
+
 
 
 
@@ -20,6 +22,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component ={Home}/>
               <Route exact path="/ContactDetails/:id" component={ContactDetails}/>
+              <Route exact path="/AddNewContact" component={AddNewContact}/>
+
 
 
              

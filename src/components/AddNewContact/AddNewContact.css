@@ -1,0 +1,86 @@
+.div1{
+    display: flex;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 41px;
+}
+.div1 .user-username{
+    width: 300px;
+    margin-left: 62px;  
+}
+.div1 .user-username ul{
+    display: flex;
+    margin-left: -64px;
+}
+.div1 .user-username ul li{
+    margin-left: 5px;
+    list-style: none;
+}
+
+.div1 .user-image i{
+    height: 209px;
+    width: 209px;
+    
+}
+.div1 .user-username form input{
+    width: 250px;
+    padding: 10px 0;
+    margin-bottom:30px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+}
+.div1 .user-username form .label-phone_number{
+    margin-left: -275px;  
+}
+.div1 .user-username form .phone_number{
+    width: 530px;
+    margin-left: -275px;
+}
+
+.btn-add_contact2{
+    
+    padding: 10px;
+    background: #2da983;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    
+}
+.btn-add_contact2 i{
+    margin-right: 10px;
+}
+
+/*************  media queries section  ***************/
+
+@media (max-width:900px) {
+
+    .div1{
+        display: flex;
+        max-width: 450px;
+        margin: 0 auto;
+        margin-top: 21px;
+  
+    }
+    .user-image{
+        width: 150px;
+        
+    }
+
+    .user-username{
+        width: 220px;
+        margin-left: 8px;
+        
+    }
+    .div1 .user-username form .label-phone_number{
+         margin-left: -591px;
+         
+    }
+    .div1 .user-username form .phone_number{
+        width: 450px;
+        margin-left: -100px;
+        
+    }
+}
