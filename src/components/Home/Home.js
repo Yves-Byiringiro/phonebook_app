@@ -33,15 +33,15 @@ export class Home extends React.Component{
             return(
                 <tr className="Table-row" key={contact.id}>
                     <td>
-                        
+                        <Link to={`ContactDetails/${contact.id}`}>
                             {contact.name}
-                        
+                        </Link>
                     </td>
                     <td>{contact.phone_number}</td>
                     <td>
-                       
+                        
                             <i className="fa fa-edit"></i>
-                       
+                        
                     </td>
                     <td>
                         <i  className="fas fa-backspace btn-delete"></i>
