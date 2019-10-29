@@ -39,8 +39,9 @@ export class Home extends React.Component{
                     </td>
                     <td>{contact.phone_number}</td>
                     <td>
-                        
+                        <Link to={`/EditContact/${contact.id}`}>
                             <i className="fa fa-edit"></i>
+                        </Link>
                         
                     </td>
                     <td>
