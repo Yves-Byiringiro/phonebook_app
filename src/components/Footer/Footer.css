@@ -1,0 +1,16 @@
+/*************** css for footer  ***************************/
+
+footer{
+    position: fixed;
+    height: 50px;
+    background: #334c54;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
+footer p{
+    text-align: center;
+    color: #fff;
+}
+

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import { Route, Switch} from 'react-router-dom';
 import {Header} from './components/Header/Header';
+import {Footer }from './components/Footer/Footer';
+
 
 
 class App extends Component {
@@ -16,7 +18,7 @@ class App extends Component {
              
             </Switch>
           </div>
-         
+          <Footer/>
   
       </div>
        
