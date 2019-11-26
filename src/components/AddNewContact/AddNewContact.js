@@ -62,6 +62,7 @@ export class AddNewContact extends React.Component{
 
             axios.post("https://code-catalist-phone-book-rails.herokuapp.com/contacts",this.state)
             .then(response =>{
+                this.props.history.push('/')
                 console.log(response)
             })
 
