@@ -97,7 +97,7 @@ export class AddNewContact extends React.Component{
 
                                  <label htmlFor="surname">surname</label><br/>
                                  <div>
-                                    <input type="text" name="surname" /> 
+                                    <input type="text" name="surname" placeholder="Smith"/>
                                  </div>
                                 
 

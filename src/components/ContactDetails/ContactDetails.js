@@ -46,7 +46,7 @@ export class ContactDetails extends Component {
                     </div>
                     <div className="user-username">
                         <div>
-                            <h1>{name}</h1>
+                        <h1>{name}</h1>
                         </div>
 
                         <div>

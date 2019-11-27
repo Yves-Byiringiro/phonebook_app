@@ -13,9 +13,11 @@ export class Home extends React.Component{
 
     state = {
         contacts: [],
-        errorMessage:''
+        errorMessage:'',
 
     }
+
+
 ////////////////    get request to fetch data from diven api  //////////////
 
     componentDidMount(){
@@ -25,25 +27,34 @@ export class Home extends React.Component{
                })
         });
     }
-////////////////    delete request  used to delete data from given api  //////////////
 
-    onDelete = (id) => {
-        axios.delete(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`).then(response =>{
 
-        this.setState({errorMessage:'destroyed'});
-        this.props.deleteHandler();
+    ////////////////    delete request  used to delete data from given api  //////////////
 
-        }).catch(error =>{
+    deleteContact(id){
+        axios.delete(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`)
+        
             this.setState({errorMessage:'error'});
-        })
-    }
-    deleteHandler(id) {
-  
-        const contacts = this.state.contacts;
-        contacts.splice(id, 1)
-        this.setState({contacts:contacts})
-    }
+            this.setState({errorMessage:'destroyed'});
 
+    ////////////////    making copy of contacts state  //////////////
+
+            let copyState= this.state.contacts 
+                for (let i=0;i<copyState.length;i++){
+                    let contact= copyState[i]
+
+    ////////////////    checking if i'm going to delete the right contact  /////////////
+
+                        if(contact.id === id){ 
+                            copyState.splice(i,1) 
+                        break  
+                        }
+                 }
+            this.setState({contacts:copyState})
+
+        
+
+    }
 
     render() {
         let contacts = this.state.contacts.map((contact)=>{
@@ -51,7 +62,7 @@ export class Home extends React.Component{
                 <tr className="Table-row" key={contact.id}>
                     <td>
                         <Link to={`ContactDetails/${contact.id}`}>
-                            {contact.name}
+                            {contact.name} {contact.surname}
                         </Link>
                     </td>
                     <td>{contact.phone_number}</td>
@@ -62,7 +73,7 @@ export class Home extends React.Component{
                         
                     </td>
                     <td>
-                        <i onClick={this.onDelete.bind(this, contact.id)} className="fas fa-backspace btn-delete"></i>
+                        <i onClick={ () => this.deleteContact(contact.id)} className="fas fa-backspace btn-delete"></i>
                     </td> 
                 </tr>                
             )
@@ -70,9 +81,9 @@ export class Home extends React.Component{
         });
         return(
             <div className="Container">
-                {this.state.errorMessage==="destroyed"?<p style={{textAlign: 'center', color: 'red'}}>Contact Destroyed</p>:null}
+                {this.state.errorMessage==="destroyed"?<p style={{textAlign: 'center', color: 'red'}}>Contact Destroyed !!!</p>:null}
 
-                {this.state.errorMessage==="error"?<p style={{textAlign: 'center', color: 'red'}}>Error has occurred, please try again later.</p>:null}
+                {this.state.errorMessage==="error"?<p style={{textAlign: 'center', color: 'red'}}>Error has occurred, please try again later !!!</p>:null}
 
                 <h1 className="Title" > Phone Book Manager</h1>
    
