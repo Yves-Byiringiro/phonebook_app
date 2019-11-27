@@ -30,6 +30,9 @@ table{
     background: whitesmoke;
     height: 40px;
 }
+.Table-row:nth-of-type(even) {
+    background: white;
+}
 .btn-add_contact{
     margin-top: 16px;
     padding: 10px;
