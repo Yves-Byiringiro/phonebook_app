@@ -62,7 +62,7 @@ export class Home extends React.Component{
                 <tr className="Table-row" key={contact.id}>
                     <td>
                         <Link to={`ContactDetails/${contact.id}`}>
-                            {contact.name} {contact.surname}
+                        {contact.name}
                         </Link>
                     </td>
                     <td>{contact.phone_number}</td>
