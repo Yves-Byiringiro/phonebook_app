@@ -9,8 +9,8 @@ import axios from 'axios'
 const initialState = {
 
     name: '',
-    fname: '',
-    sname: '',
+    firstname: '',
+    surname: '',
     phone_number: '',
     nameError:'',
     phone_numberError:'',
@@ -39,11 +39,11 @@ export class AddNewContact extends React.Component{
         let phone_numberError='';
 
 
-        if (!this.state.fname){
+        if (!this.state.firstname){
 
             fnameError="first name is required !";
         }
-        if (!this.state.sname){
+        if (!this.state.surname){
 
             surnameError="surname is required !";
         }
@@ -62,13 +62,13 @@ export class AddNewContact extends React.Component{
 //////////////   submitHandler function to post (submit) data at given api   /////////////////
 
     submitHandler = e =>{
-        e.preventDefault();
-        const isValid = this.validate();
-        if (isValid) {
+       
+        // const isValid = this.validate();
+        // if (isValid) {
             
             console.log(this.state)
-
-            const ContactDetails={name:this.state.fname+" "+this.state.sname, phone_number:this.state.phone_number}
+            e.preventDefault();
+            const ContactDetails={name:this.state.firstname+" "+this.state.surname, phone_number:this.state.phone_number}
             axios.post("https://code-catalist-phone-book-rails.herokuapp.com/contacts",ContactDetails)
             .then(response =>{
                 this.props.history.push('/')
@@ -78,7 +78,8 @@ export class AddNewContact extends React.Component{
 ////////     clear the state after submitting   ///////////////////
 
             this.setState(initialState);
-        }
+            
+        // }
 
     }
       
@@ -101,14 +102,14 @@ export class AddNewContact extends React.Component{
                                 <label htmlFor="name">name</label><br/>
                                 <div>
                                     <div style={{ color:'red'}}>{this.state.fnameError}</div>
-                                    <input type="text" name ="name" value={name.fname} onChange={this.changeHandler}  placeholder="name" /><br/>
+                                    <input type="text" name ="name" value={name.firstname} onChange={this.changeHandler}  placeholder="name" /><br/>
                                 </div>
                                 
 
                                  <label htmlFor="surname">surname</label><br/>
                                  <div>
                                     <div style={{ color:'red'}}>{this.state.surnameError}</div>
-                                    <input type="text" name="surname" value={name.sname} onChange={this.changeHandler} placeholder="surname"/>
+                                    <input type="text" name="surname" value={name.surname} onChange={this.changeHandler} placeholder="surname"/>
                                  </div>
                                 
 
