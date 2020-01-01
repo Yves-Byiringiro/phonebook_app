@@ -31,7 +31,7 @@ export class EditContact extends React.Component{
 
         this.setState({
             name: contact.name,
-            phone_number:contact.phone_number
+            phone_number: contact.phone_number
         });
         
         // this.setState({notes:notes.slice()})
