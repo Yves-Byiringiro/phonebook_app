@@ -11,6 +11,8 @@ export class EditContact extends React.Component{
         this.state = {
             
             name: '',
+            firstName: '',
+            surName: '',
             phone_number: '',
             nameError:'',
             phone_numberError:'',
@@ -27,12 +29,23 @@ export class EditContact extends React.Component{
 
         const res = await axios.get(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`);
 
+ 
+
         const contact = res.data;
+        const fullname = contact.name
+        const hello = fullname.split(' ')
+        const firtname1 = hello[0];
+        const surname1 = hello[1];
 
         this.setState({
-            name: contact.name,
+            name: firtname1+" "+surname1,
+            firstName: firtname1,
+            surName: surname1,
             phone_number: contact.phone_number
+
         });
+
+
         
         // this.setState({notes:notes.slice()})
     }
@@ -90,7 +103,7 @@ export class EditContact extends React.Component{
 
 ////////   destructuring name and phone_number to make it easier to work with  ///////////////////
 
-        const{name,phone_number}= this.state
+        const{name, firstName, surName, phone_number}= this.state
 
 
         return(
@@ -104,12 +117,12 @@ export class EditContact extends React.Component{
                             <form onSubmit={this.submitHandler}>
                                 <label htmlFor="name">name</label><br/>
                                 <div>
-                                    <input type="text" name ="name" value={name} onChange={this.changeHandler} /><br/>
+                                    <input type="text" name ="name" value={firstName} onChange={this.changeHandler} /><br/>
                                     <div style={{ color:'red'}}>{this.state.nameError}</div>
                                 </div>
 
                                  <label htmlFor="surname">surname</label><br/>
-                                <input type="text" name="surname" /> 
+                                <input type="text" name="surname" value={surName} onChange={this.changeHandler}/> 
 
                                 <hr/>
                                 <label htmlFor="phoneNumber" className="label-phone_number">mobile</label><br/>
