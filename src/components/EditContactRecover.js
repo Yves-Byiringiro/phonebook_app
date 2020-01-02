@@ -76,12 +76,13 @@ export class EditContact extends React.Component{
         console.log(this.state)
         axios.put(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,this.state)
         .then(response =>{
-            this.props.history.push('/');
             console.log(response)
         })
         .catch(error =>{
             console.log(error)
         })
+
+        this.props.history.push('/');
 
         }
     }
