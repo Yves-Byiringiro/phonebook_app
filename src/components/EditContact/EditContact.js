@@ -26,25 +26,11 @@ export class EditContact extends React.Component{
             const res = axios.put(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,ContactDetails)
             .then(response =>{
                 this.props.history.push('/')
-                // const contact = res.data;
-                // console.log(contact)
 
+                
 
             })
-            const contact = res.data;
-            // const fullname = contact.name;
-            // const hello = fullname.split(' ')
-            // const firtname1 = hello[0];
-            // const surname1 = hello[1];
-    
-            this.setState({
-                // name: firtname1+" "+surname1,
-                // name: contact.name,
-                firstname: this.state.firstname,
-                surname: this.state.surname,
-                // phone_number: contact.phone_number
-    
-            });
+
         
     }
     render(){

@@ -26,9 +26,8 @@ export class EditContact extends React.Component{
     async componentDidMount() {
         
         const {id} = this.props.match.params;
-        const ContactDetails={name:this.state.firstname+" "+this.state.surname, phone_number:this.state.phone_number}
 
-        const res = await axios.get(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,ContactDetails);
+        const res = await axios.get(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`);
 
  
 
