@@ -4,139 +4,92 @@ import './EditContact.css';
 
 export class EditContact extends React.Component{
 
-///////////   initialize state in the constructor  ////////////
+        ///////////   initialize state in the constructor  ////////////
+        constructor(props){
+            super(props)
+            this.state = {name : '',firstname:'', surname:'',phone_number:'',fnameError:'',surnameError:'',phone_numberError:''}
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
 
-    constructor(props){
-        super(props)
-        this.state = {
+        handleChange(event) {
+            this.setState({value: event.target.value});
+        }
+
+        handleSubmit(event) { 
+
+            const {id} = this.props.match.params;
+            console.log(this.state)
+            event.preventDefault();
+            const ContactDetails={name:this.state.firstname+" "+this.state.surname, phone_number:this.state.phone_number}
             
-            name: '',
-            firstName: '',
-            surName: '',
-            phone_number: '',
-            nameError:'',
-            phone_numberError:'',
-            
-            
-        }
-    }
+            const res = axios.put(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,ContactDetails)
+            .then(response =>{
+                this.props.history.push('/')
+                // const contact = res.data;
+                // console.log(contact)
 
-////////////////    get request to fetch data from diven api before update //////////////
 
-    async componentDidMount() {
+            })
+            const contact = res.data;
+            // const fullname = contact.name;
+            // const hello = fullname.split(' ')
+            // const firtname1 = hello[0];
+            // const surname1 = hello[1];
+    
+            this.setState({
+                // name: firtname1+" "+surname1,
+                // name: contact.name,
+                firstname: this.state.firstname,
+                surname: this.state.surname,
+                // phone_number: contact.phone_number
+    
+            });
         
-        const {id} = this.props.match.params;
-
-        const res = await axios.get(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`);
-
- 
-
-        const contact = res.data;
-        const fullname = contact.name
-        const hello = fullname.split(' ')
-        const firtname1 = hello[0];
-        const surname1 = hello[1];
-
-        this.setState({
-            name: firtname1+" "+surname1,
-            firstName: firtname1,
-            surName: surname1,
-            phone_number: contact.phone_number
-
-        });
-
-
-        
-        // this.setState({notes:notes.slice()})
     }
-
- 
-    changeHandler = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    }
-
-//////////  validating name and phone number input  ////////////////
-
-    validate = () => {
-        let nameError='';
-        let phone_numberError='';
-
-
-        if (!this.state.name){
-
-            nameError="name is required !";
-        }
-        if (!this.state.phone_number){
-
-            phone_numberError="phone is required !";
-        }
-
-        if (nameError || phone_numberError) {
-            this.setState({nameError, phone_numberError});
-            return false;
-        }
-        return true;
-    }
-
-//////////////   submitHandler function to put (update) data at given api   /////////////////
-
-    submitHandler = e =>{
-        const {id} = this.props.match.params;
-        e.preventDefault();
-        
-        const isValid = this.validate();
-        if (isValid) {
-        console.log(this.state)
-        axios.put(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,this.state)
-        .then(response =>{
-            this.props.history.push('/');
-            console.log(response)
-        })
-        .catch(error =>{
-            console.log(error)
-        })
-
-        }
-    }
-      
     render(){
-
-////////   destructuring name and phone_number to make it easier to work with  ///////////////////
-
-        const{name, firstName, surName, phone_number}= this.state
-
-
+    
+    
         return(
             
-                <div className="containerEdit">
+                <div className="container">
                     <div className="div1">
                         <div className="user-image">
                             <i className="fas fa-camera fa-10x"></i>
                         </div>
                         <div className="user-username">
-                            <form onSubmit={this.submitHandler}>
+                            <form onSubmit={this.handleSubmit}>
+
                                 <label htmlFor="name">name</label><br/>
                                 <div>
-                                    <input type="text" name ="name" value={firstName} onChange={this.changeHandler} /><br/>
-                                    <div style={{ color:'red'}}>{this.state.nameError}</div>
+                                    <div style={{ color:'red'}}></div>
+                                    <input type="text" name ="name" value={this.state.name.firstname} onChange={e => this.setState({ firstname: e.target.value })} placeholder="name" /><br/>
                                 </div>
+                                
 
                                  <label htmlFor="surname">surname</label><br/>
-                                <input type="text" name="surname" value={surName} onChange={this.changeHandler}/> 
+                                 <div>
+                                    <div style={{ color:'red'}}></div>
+                                    <input type="text" name="surname" value={this.state.name.surname} onChange={e => this.setState({surname: e.target.value })} placeholder="surname"/>
+                                 </div>
+                                
 
                                 <hr/>
                                 <label htmlFor="phoneNumber" className="label-phone_number">mobile</label><br/>
                                 <div>
-                                    <input type="text" name ="phone_number"  value={phone_number} onChange={this.changeHandler} className="phone_number"/>
-                                    <div style={{ color:'red'}}>{this.state.phone_numberError}</div>
+                                    <div style={{ color:'red'}}></div>
+                                    <input type="text" name ="phone_number" value={this.state.phone_number} onChange={e => this.setState({ phone_number: e.target.value })} placeholder="+ 444 444 444" className="phone_number"/>
                                 </div>
-
-                                <button type="submit" className="btn-add_contact2">Update Contact</button>
+                                
+                                <button type="submit" className="btn-add_contact2" >
+                                    <i className="fas fa-plus"></i>
+                                    Update Number
+                                </button>
                             </form>
                         </div>
                     </div>
-                </div>
-               
+                </div>   
+            
         )
     }
 }
