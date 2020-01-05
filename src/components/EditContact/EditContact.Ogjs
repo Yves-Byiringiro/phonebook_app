@@ -12,33 +12,6 @@ export class EditContact extends React.Component{
             this.handleSubmit = this.handleSubmit.bind(this);
         }
 
-        async componentDidMount() {
-        
-            const {id} = this.props.match.params;
-    
-            const res = await axios.get(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`);
-    
-     
-    
-            const contact = res.data;
-            const fullname = contact.name
-            const hello = fullname.split(' ')
-            const firtname1 = hello[0];
-            const surname1 = hello[1];
-    
-            this.setState({
-                name: firtname1+" "+surname1,
-                firstName: firtname1,
-                surName: surname1,
-                phone_number: contact.phone_number
-    
-            });
-    
-    
-            
-            // this.setState({notes:notes.slice()})
-        }
-
         handleChange(event) {
             this.setState({value: event.target.value});
         }
@@ -50,7 +23,7 @@ export class EditContact extends React.Component{
             event.preventDefault();
             const ContactDetails={name:this.state.firstname+" "+this.state.surname, phone_number:this.state.phone_number}
             
-            axios.put(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,ContactDetails)
+            const res = axios.get(`https://code-catalist-phone-book-rails.herokuapp.com/contacts/${id}`,ContactDetails)
             .then(response =>{
                 this.props.history.push('/')
 

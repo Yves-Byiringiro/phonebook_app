@@ -9,7 +9,7 @@ export class AddNewContact extends React.Component{
     ///////////   initialize state in the constructor  ////////////
         constructor(props){
             super(props)
-            this.state = {name : '',firstname:'', surname:'',phone_number:'',fnameError:'',surnameError:'',phone_numberError:''}
+            this.state = {name : 'ooooo',firstname:'fffff', surname:'kkkkk',phone_number:'',fnameError:'',surnameError:'',phone_numberError:''}
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
         }
@@ -73,17 +73,17 @@ export class AddNewContact extends React.Component{
                             <div className="user-username">
                                 <form onSubmit={this.handleSubmit}>
     
-                                    <label htmlFor="name">name</label><br/>
+                                    <label htmlFor="name">Firstname</label><br/>
                                     <div>
                                         <div style={{ color:'red'}}>{this.state.fnameError}</div>
-                                        <input type="text" name ="name" value={this.state.name.firstname} onChange={e => this.setState({ firstname: e.target.value })} placeholder="name" /><br/>
+                                        <input type="text" name ="name" value={this.state.name.firstname} onChange={e => this.setState({ firstname: e.target.value })} placeholder="Firstname" /><br/>
                                     </div>
                                     
     
-                                     <label htmlFor="surname">surname</label><br/>
+                                     <label htmlFor="surname">Surname</label><br/>
                                      <div>
                                         <div style={{ color:'red'}}>{this.state.surnameError}</div>
-                                        <input type="text" name="surname" value={this.state.name.surname} onChange={e => this.setState({surname: e.target.value })} placeholder="surname"/>
+                                        <input type="text" name="surname" value={this.state.name.surname} onChange={e => this.setState({surname: e.target.value })} placeholder="Surname"/>
                                      </div>
                                     
     
