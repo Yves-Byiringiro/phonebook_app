@@ -9,7 +9,7 @@ export class AddNewContact extends React.Component{
     ///////////   initialize state in the constructor  ////////////
         constructor(props){
             super(props)
-            this.state = {name : 'ooooo',firstname:'fffff', surname:'kkkkk',phone_number:'',fnameError:'',surnameError:'',phone_numberError:''}
+            this.state = {name : '',firstname:'', surname:'',phone_number:'',fnameError:'',surnameError:'',phone_numberError:''}
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
         }
