@@ -23,8 +23,8 @@ export class EditContact extends React.Component{
             const contact = res.data;
             const fullname = contact.name
             const hello = fullname.split(' ')
-            const firtname1 = hello[1];
-            const surname1 = hello[2];
+            const firtname1 = hello[0];
+            const surname1 = hello[1];
             console.log('phone number is here: '+contact.phone_number)
             console.log('fullname is here:'+  contact.name)
             console.log(hello)
