@@ -49,7 +49,35 @@ export class EditContact extends React.Component{
             this.setState({value: event.target.value});
         }
 
+        validate = () => {
+            let fnameError='';
+            let surnameError='';
+            let phone_numberError='';
+    
+    
+            if (!this.state.firstname){
+    
+                fnameError="first name is required !";
+            }
+            if (!this.state.surname){
+    
+                surnameError="surname is required !";
+            }
+            if (!this.state.phone_number){
+    
+                phone_numberError="phone is required !";
+            }
+    
+            if (fnameError || surnameError || phone_numberError) {
+                this.setState({fnameError,surnameError, phone_numberError});
+                return false;
+            }
+            return true;
+        }
+
         handleSubmit(event) { 
+            const isValid = this.validate();
+            if (isValid) {
 
             const {id} = this.props.match.params;
             console.log(this.state)
@@ -64,7 +92,7 @@ export class EditContact extends React.Component{
 
             })
 
-        
+        }
     }
     render(){
     
@@ -81,22 +109,22 @@ export class EditContact extends React.Component{
 
                         <label htmlFor="name">Firstname</label><br/>
                         <div>
-                            <div style={{ color:'red'}}></div>
+                            <div style={{ color:'red'}}>{this.state.fnameError}</div>
                             <input type="text" name ="name" value={this.state.firstname} onChange={e => this.setState({ firstname: e.target.value })} placeholder="Firstname" /><br/>
                         </div>
                         
 
                             <label htmlFor="surname">Surname</label><br/>
                             <div>
-                            <div style={{ color:'red'}}></div>
-                            <input type="text" name="surname" value={this.state.surname} onChange={e => this.setState({surname: e.target.value })} placeholder="Surname"/>
+                                <div style={{ color:'red'}}>{this.state.surnameError}</div>
+                                <input type="text" name="surname" value={this.state.surname} onChange={e => this.setState({surname: e.target.value })} placeholder="Surname"/>
                             </div>
                         
 
                         <hr/>
                         <label htmlFor="phoneNumber" className="label-phone_number">Mobile</label><br/>
                         <div>
-                            <div style={{ color:'red'}}></div>
+                            <div style={{ color:'red'}}>{this.state.phone_numberError}</div>
                             <input type="text" name ="phone_number" value={this.state.phone_number} onChange={e => this.setState({ phone_number: e.target.value })} placeholder="+ 444 444 444" className="phone_number"/>
                         </div>
                         
